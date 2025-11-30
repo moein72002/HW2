@@ -1,0 +1,42 @@
+## ML HW2 Project Architecture
+
+- **Notebook `Machine_Learning_HW2.ipynb`**  
+  Primary workspace containing all assignment sections. Organized into four parts (binary, multiclass, multilabel, and final evaluation) with numbered tasks. Markdown cells describe requirements; code cells provide implementations and placeholders (`# Your code here` / `[Your answer here]`).
+
+- **Data sourcing (inline)**  
+  Datasets are loaded within the notebook via URLs or sklearn generators. There are no standalone data modules; preprocessing and analysis live beside each task.
+
+- **Dependencies**  
+  Managed implicitly in the notebook imports (NumPy, pandas, matplotlib, seaborn, scikit-learn). Any new libraries must be added to `requirements.txt` per workspace rules.
+
+### Part I – Binary Classification
+- Cells cover dataset loading, preprocessing, model training/evaluation, metric interpretation, ROC analysis, and cross-validation for the heart disease dataset.
+
+### Future Parts (Placeholders)
+- **Part II – Multiclass (Wine Quality)**: loading, model comparisons, confusion matrix, OvR strategy, hyperparameter tuning.
+- **Part III – Multilabel (Movie Genres)**: dataset creation, multilabel concepts, KNN + classifier chains, per-label analysis.
+- **Part IV – Comparison & Reflections**: cross-task comparisons, final testing, error analysis, takeaways.
+
+Use this map to keep implementations aligned with the prescribed notebook flow.
+# Architecture Overview
+
+## Repository Layout
+- `Machine_Learning_HW2.ipynb` — primary Jupyter notebook containing all 20 assignment sections. Each section alternates between markdown instructions, response placeholders, and executable code cells.
+- `.cursor/rules/project_rules.mdc` — workspace guardrails that govern tooling, dependency management, and workflow constraints.
+
+## Execution Flow
+1. **Global Imports Cell** sets up numpy/pandas, plotting libraries, and scikit-learn utilities shared across the notebook.
+2. **Part I: Binary Classification (Heart Disease)** introduces the first end-to-end pipeline: data ingestion, preprocessing, Random Forest training, metric analysis (confusion matrix, ROC/AUC), and cross-validation.
+3. **Part II: Multiclass Classification (Wine Quality)** repeats the workflow with multiple estimators and comparative analysis.
+4. **Part III: Multilabel Classification (Movie Genres)** explores multilabel data creation, specialized metrics, and advanced techniques (KNN, classifier chains).
+5. **Part IV: Global Comparison & Reflection** aggregates findings, performs held-out testing, and captures lessons learned.
+
+## Data & Dependencies
+- Core libraries already imported in the notebook: `numpy`, `pandas`, `matplotlib`, `seaborn`, `scikit-learn`.
+- External datasets are fetched on-demand (e.g., UCI/Plotly CSVs) directly within code cells; no raw data stored in the repo.
+- When adding new Python dependencies, update `requirements.txt` and run `uv pip sync requirements.txt` inside the `.venv` per workspace rules.
+
+## Workflow Notes
+- Keep preprocessing artifacts (cleaned DataFrames, scalers, train/val/test splits, fitted models, confusion matrices) in well-named variables for reuse by downstream cells.
+- Each markdown placeholder (`[Your answer here]`) should be replaced with concise analyses tied to the outputs produced in the preceding code cell.
+- Visualizations should use the global seaborn/matplotlib styling defined in the imports cell to ensure consistency across all sections.
